@@ -3,7 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoang Nguyen Viet Quoc — Backend Software Engineer</title>
+<title>Backend Developer Portfolio | Hoang Nguyen Viet Quoc</title>
+<meta name="description" content="Backend Software Engineer and IT Student. Experienced in building REST APIs, databases, authentication, and real-time systems using Java/Spring Boot and C#/ASP.NET Core.">
+<meta name="keywords" content="Backend Developer, Software Engineer, Java, Spring Boot, C#, ASP.NET Core, SQL, REST API">
+<meta name="author" content="Hoang Nguyen Viet Quoc">
+<link rel="canonical" href="https://hqcoder05.github.io/">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Backend Developer Portfolio | Hoang Nguyen Viet Quoc">
+<meta property="og:description" content="Backend Software Engineer experienced in Java/Spring Boot and C#/ASP.NET Core. View my projects, architecture, and backend systems.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hqcoder05.github.io/">
+<meta property="og:image" content="https://hqcoder05.github.io/og-image.jpg"> <!-- Placeholder for eventual image -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -34,6 +47,7 @@
   }
   ::selection { background: var(--accent); color: #000; }
   a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   
   .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
   
@@ -77,7 +91,7 @@
   .btn-outline { background: transparent; color: var(--accent); }
   .btn-outline:hover { background: var(--accent); color: #000; }
   
-  .hero-stats { display: flex; gap: 48px; margin-top: 64px; border-top: 1px solid var(--border); padding-top: 40px; }
+  .hero-stats { display: flex; gap: 48px; margin-top: 64px; border-top: 1px solid var(--border); padding-top: 40px; flex-wrap: wrap; }
   .stat-item .num { font-size: 32px; font-family: 'Playfair Display', serif; color: var(--text-main); margin-bottom: 4px; }
   .stat-item .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
 
@@ -99,42 +113,64 @@
 
   /* Projects */
   .project-card { 
-    display: grid; grid-template-columns: 3fr 4fr; gap: 48px; 
+    display: grid; grid-template-columns: 1fr; gap: 40px; 
     margin-bottom: 80px; padding: 48px; 
     background: var(--surface); border: 1px solid var(--border);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
   .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--border-light); }
+  @media (min-width: 900px) {
+    .project-card { grid-template-columns: 1.2fr 1.5fr; }
+  }
   
   .proj-meta { margin-bottom: 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
-  .proj-title { font-size: 28px; margin-bottom: 24px; }
+  .proj-title { font-size: 28px; margin-bottom: 16px; }
   .proj-title a { color: var(--text-main); }
   .proj-title a:hover { color: var(--accent); }
   .proj-desc { color: var(--text-muted); margin-bottom: 32px; }
   
-  .proj-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
-  .proj-stat .s-num { font-size: 24px; font-family: 'Playfair Display', serif; color: var(--text-main); }
-  .proj-stat .s-lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  .proj-stats-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+  .proj-stat { display: flex; flex-direction: column; }
+  .proj-stat .s-num { font-size: 20px; font-family: 'Playfair Display', serif; color: var(--text-main); }
+  .proj-stat .s-lbl { font-size: 12px; color: var(--text-muted); }
+  .proj-stat .s-context { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
   
-  .proj-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
-  .tech-badge { font-size: 12px; padding: 6px 12px; border: 1px solid var(--border-light); color: var(--text-muted); }
+  .proj-tech-group { margin-bottom: 24px; }
+  .proj-tech-group h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); margin-bottom: 8px; }
+  .proj-tech { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tech-badge { font-size: 12px; padding: 4px 10px; border: 1px solid var(--border-light); color: var(--text-muted); }
   
-  .proj-links { display: flex; gap: 16px; }
+  .proj-links { display: flex; gap: 16px; margin-top: auto; }
   .proj-link { 
     font-size: 13px; text-transform: uppercase; letter-spacing: 1px; 
     display: inline-flex; align-items: center; gap: 8px; 
     border-bottom: 1px solid var(--accent); padding-bottom: 4px; color: var(--text-main);
   }
   .proj-link:hover { color: var(--accent); }
-  .proj-link.disabled { border-color: var(--text-dim); color: var(--text-dim); cursor: not-allowed; }
+
+  /* Architecture Diagram */
+  .arch-diagram {
+    background: var(--bg); border: 1px solid var(--border); padding: 24px; margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--text-muted);
+    border-radius: 4px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    text-align: center;
+  }
+  .arch-box { border: 1px solid var(--border-light); padding: 8px 16px; background: var(--surface); color: var(--text-main); min-width: 160px; }
+  .arch-box.accent { border-color: var(--accent); color: var(--accent); }
+  .arch-arrow { color: var(--text-dim); }
 
   /* Skills */
-  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .skills-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+  @media (min-width: 768px) {
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   .skill-group { padding: 32px; border: 1px solid var(--border); background: var(--surface); }
-  .skill-title { font-size: 16px; margin-bottom: 24px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; }
-  .skill-list { display: flex; flex-wrap: wrap; gap: 12px; }
-  .skill-item { font-size: 14px; color: var(--text-main); }
-  .skill-item:not(:last-child)::after { content: "•"; color: var(--border-light); margin-left: 12px; }
+  .skill-group.primary { border-color: var(--accent-dim); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .skill-group.primary .skill-title { color: var(--accent); }
+  .skill-title { font-size: 14px; margin-bottom: 24px; color: var(--text-main); text-transform: uppercase; letter-spacing: 1.5px; }
+  .skill-list { display: flex; flex-direction: column; gap: 12px; }
+  .skill-item { font-size: 14px; color: var(--text-muted); display: flex; align-items: center; }
+  .skill-item::before { content: "▹"; color: var(--accent); margin-right: 12px; font-size: 12px; }
 
   /* Research */
   .research-card { padding: 40px; border: 1px solid var(--border); background: var(--surface); display: flex; gap: 32px; align-items: flex-start; }
@@ -145,7 +181,7 @@
   .research-link { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
 
   /* Contact */
-  .contact-section { text-align: center; padding: 160px 0; }
+  .contact-section { text-align: center; padding: 120px 0; }
   .contact-section h2 { font-size: 48px; margin-bottom: 24px; }
   .contact-section p { color: var(--text-muted); max-width: 500px; margin: 0 auto 48px; }
   .contact-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
@@ -155,19 +191,21 @@
   footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-dim); letter-spacing: 0.5px; }
 
   /* Animations */
-  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
-    .project-card { grid-template-columns: 1fr; padding: 32px; }
-    .about-grid { grid-template-columns: 1fr; }
+    .project-card { padding: 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero h1 { font-size: 40px; }
-    .hero-stats { flex-wrap: wrap; gap: 32px; }
-    .skills-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+    .arch-diagram { display: none; /* Hide on small mobile to save space if needed, or keep it */ }
   }
   @media (max-width: 600px) {
     .nav-links { display: none; }
-    .research-card { flex-direction: column; gap: 16px; }
+    .research-card { flex-direction: column; gap: 16px; padding: 24px; }
+    section { padding: 80px 0; }
+    .hero { padding-top: 100px; }
   }
 </style>
 </head>
@@ -175,8 +213,8 @@
 
 <header>
   <div class="container">
-    <nav>
-      <a href="#" class="logo serif">HNVQ<span>.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#" aria-label="Home" class="logo serif">HNVQ<span>.</span></a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Work</a>
@@ -192,30 +230,30 @@
   <section class="hero" id="top" style="border-top:none;">
     <div class="container">
       <div class="hero-content fade-up">
-        <span class="kicker">Backend Software Engineer</span>
+        <span class="kicker">Backend Developer / Software Engineering Student</span>
         <h1>Kiến tạo hệ thống <i>bền vững.</i></h1>
-        <p>Sinh viên IT năm cuối tại TP.HCM. Chuyên môn thiết kế database, phát triển RESTful API và kiến trúc phần mềm sạch. Sẵn sàng cho vị trí Backend Developer Internship.</p>
+        <p>I build reliable backend systems, focusing on REST APIs, relational databases, authentication, and real-time communication using Java/Spring Boot and C#/ASP.NET Core.</p>
         <div style="display:flex; gap:16px; margin-top:32px;">
-          <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
-          <a href="#contact" class="btn btn-outline">Liên Hệ</a>
+          <a href="#projects" class="btn btn-primary" aria-label="View Projects">Xem Dự Án</a>
+          <a href="#contact" class="btn btn-outline" aria-label="Contact Me">Liên Hệ</a>
         </div>
         
         <div class="hero-stats">
           <div class="stat-item">
             <div class="num">56</div>
-            <div class="label">API Endpoints</div>
+            <div class="label">REST API Endpoints</div>
           </div>
           <div class="stat-item">
             <div class="num">2</div>
-            <div class="label">Systems Shipped</div>
+            <div class="label">Backend Systems Shipped</div>
           </div>
           <div class="stat-item">
             <div class="num">41%</div>
-            <div class="label">Commit Share</div>
+            <div class="label">Team Commit Share</div>
           </div>
           <div class="stat-item">
             <div class="num">1</div>
-            <div class="label">Publication</div>
+            <div class="label">Research Publication</div>
           </div>
         </div>
       </div>
@@ -228,14 +266,14 @@
       <h2 class="sec-title"><span>01</span> Về Bản Thân</h2>
       <div class="about-grid">
         <div class="about-text fade-up">
-          <p>Mình là sinh viên IT năm cuối tại Đại học GTVT TP.HCM, tập trung vào <strong>backend engineering</strong> — từ thiết kế database, dựng RESTful API, đến triển khai business logic theo kiến trúc sạch (Repository + Service Layer).</p>
-          <p>Mình đề cao sự chủ động: tự kiến trúc và triển khai toàn bộ một nền tảng social network 35-endpoint một mình, và trong môi trường team thì luôn nỗ lực đóng góp nhiều nhất để đẩy tiến độ chung.</p>
-          <p>Làm việc theo hướng <strong>AI-first</strong> — ứng dụng ChatGPT, Claude, Gemini và Antigravity mỗi ngày để tăng tốc nghiên cứu stack mới, debug và tối ưu hóa code.</p>
+          <p>Mình là sinh viên IT năm cuối tại Đại học Giao thông Vận tải TP.HCM. Định hướng của mình tập trung hoàn toàn vào <strong>Backend Engineering</strong> — thiết kế database schema, xây dựng RESTful APIs, và xử lý real-time event.</p>
+          <p>Kinh nghiệm thực tế của mình bao gồm việc tự kiến trúc và xây dựng hoàn chỉnh nền tảng mạng xã hội (35 REST endpoints) và đóng vai trò Backend Developer trong đội ngũ 3 người xây dựng hệ thống quản lý câu hỏi tích hợp AI (Course Management System).</p>
+          <p>Mình kết hợp các công cụ hỗ trợ như AI (ChatGPT, Claude) để tối ưu hoá việc đọc tài liệu, debug, và viết integration tests, giúp đảm bảo tiến độ và chất lượng hệ thống.</p>
         </div>
-        <div class="profile-card fade-up" style="transition-delay: 0.2s;">
+        <div class="profile-card fade-up" style="transition-delay: 0.1s;">
           <div class="profile-row">
             <span class="profile-label">Chuyên môn</span>
-            <span class="profile-val">Backend / System Design</span>
+            <span class="profile-val">Backend Software Engineering</span>
           </div>
           <div class="profile-row">
             <span class="profile-label">Học vấn</span>
@@ -251,7 +289,7 @@
           </div>
           <div class="profile-row">
             <span class="profile-label">Trạng thái</span>
-            <span class="profile-val" style="color:var(--accent);">Tìm kiếm Thực tập</span>
+            <span class="profile-val" style="color:var(--accent);">Available for Internship</span>
           </div>
         </div>
       </div>
@@ -261,59 +299,123 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="container">
-      <h2 class="sec-title"><span>02</span> Dự Án Nổi Bật</h2>
+      <h2 class="sec-title"><span>02</span> Dự Án Kỹ Thuật</h2>
 
       <!-- Project 1: QBCA -->
       <div class="project-card fade-up">
-        <div>
-          <div class="proj-meta">Team of 7 · May 2025 – Aug 2025</div>
-          <h3 class="proj-title"><a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener">QBCA (Course Management) ↗</a></h3>
-          <p class="proj-desc">Hệ thống phát hiện câu hỏi trùng lặp bằng semantic similarity (Sentence-BERT + Cosine Similarity). Đóng góp vai trò Backend Developer trong đội ngũ cross-functional.</p>
+        <div style="display: flex; flex-direction: column;">
+          <div class="proj-meta">Course Management System · Team Project</div>
+          <h3 class="proj-title"><a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener" aria-label="Course Management System">QBCA ↗</a></h3>
+          <p class="proj-desc">Hệ thống quản lý kho câu hỏi tích hợp module phát hiện câu hỏi trùng lặp qua API AI (Sentence-BERT). Đảm nhiệm vai trò Backend Developer trong team 3 backend.</p>
           
           <div class="proj-stats-grid">
-            <div class="proj-stat"><div class="s-num">21</div><div class="s-lbl">Endpoints</div></div>
-            <div class="proj-stat"><div class="s-num">179</div><div class="s-lbl">Commits</div></div>
-            <div class="proj-stat"><div class="s-num">41%</div><div class="s-lbl">Team Share</div></div>
+            <div class="proj-stat">
+              <span class="s-num">21 REST Endpoints</span>
+              <span class="s-lbl">Quản lý User, Câu hỏi, Workflow phê duyệt</span>
+              <span class="s-context">Phân quyền RBAC qua Spring Security</span>
+            </div>
+            <div class="proj-stat">
+              <span class="s-num">41% Team Commits</span>
+              <span class="s-lbl">179/437 commits</span>
+              <span class="s-context">Đóng góp lớn nhất vào repository chung</span>
+            </div>
+          </div>
+          
+          <div class="proj-tech-group">
+            <div class="proj-tech">
+              <span class="tech-badge">Java</span><span class="tech-badge">Spring Boot</span>
+              <span class="tech-badge">Spring Security</span><span class="tech-badge">JPA</span>
+              <span class="tech-badge">SQL Server</span><span class="tech-badge">REST API</span>
+            </div>
+          </div>
+          <ul style="color:var(--text-muted); font-size:14px; margin-bottom:24px; padding-left:16px; line-height:1.6;">
+            <li>Thiết kế Database Schema và triển khai Role-Based Access Control (RBAC).</li>
+            <li>Xây dựng REST APIs và xử lý logic xác thực/phân quyền (Authentication & Authorization).</li>
+            <li>Tích hợp module phát hiện trùng lặp sử dụng Semantic Similarity.</li>
+          </ul>
+          
+          <div class="proj-links">
+            <a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener" class="proj-link" aria-label="View Source Code">Mã Nguồn (GitHub) ↗</a>
           </div>
         </div>
         
         <div>
-          <div class="proj-tech">
-            <span class="tech-badge">Java</span><span class="tech-badge">Spring Boot</span>
-            <span class="tech-badge">Spring Security</span><span class="tech-badge">Spring Data JPA</span>
-            <span class="tech-badge">SQL Server</span><span class="tech-badge">REST API</span>
-          </div>
-          <p class="proj-desc" style="font-size:14px;">Thiết kế database schema, triển khai role-based access control xuyên suốt module. Tích hợp module AI duplicate-detection vào backend pipeline.</p>
-          <div class="proj-links">
-            <a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener" class="proj-link">Mã Nguồn (GitHub) ↗</a>
+          <div class="arch-diagram">
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Backend Architecture</span>
+            <div class="arch-box">Client (React)</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box accent">Spring Boot REST API</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Controller & Security Layer</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Service Layer (Business Logic + AI Call)</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Repository (Spring Data JPA)</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">SQL Server Database</div>
           </div>
         </div>
       </div>
 
       <!-- Project 2: OkemSocial -->
       <div class="project-card fade-up">
-        <div>
-          <div class="proj-meta">Solo Project · Sep 2025 – Nov 2025</div>
-          <h3 class="proj-title"><a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener">OkemSocial ↗</a></h3>
-          <p class="proj-desc">Nền tảng mạng xã hội full-stack, tự kiến trúc và triển khai end-to-end một mình — từ database schema đến real-time messaging theo mô hình Repository + Service Layer.</p>
+        <div style="display: flex; flex-direction: column;">
+          <div class="proj-meta">OkemSocial · Solo Backend Architecture</div>
+          <h3 class="proj-title"><a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener" aria-label="Okem Social">OkemSocial ↗</a></h3>
+          <p class="proj-desc">Nền tảng mạng xã hội full-stack, được thiết kế và triển khai độc lập từ cơ sở dữ liệu đến hệ thống giao tiếp thời gian thực (real-time communication).</p>
           
           <div class="proj-stats-grid">
-            <div class="proj-stat"><div class="s-num">35</div><div class="s-lbl">Endpoints</div></div>
-            <div class="proj-stat"><div class="s-num">10</div><div class="s-lbl">DB Tables</div></div>
-            <div class="proj-stat"><div class="s-num">4</div><div class="s-lbl">SignalR Hubs</div></div>
+            <div class="proj-stat">
+              <span class="s-num">35 REST Endpoints</span>
+              <span class="s-lbl">Authentication · Social · Messaging</span>
+              <span class="s-context">Kiến trúc MVC và Web API độc lập</span>
+            </div>
+            <div class="proj-stat">
+              <span class="s-num">10 Tables & 4 Hubs</span>
+              <span class="s-lbl">Database & SignalR Real-time</span>
+              <span class="s-context">Xử lý Chat 1-1 và Notification tức thì</span>
+            </div>
+          </div>
+          
+          <div class="proj-tech-group">
+            <div class="proj-tech">
+              <span class="tech-badge">ASP.NET Core 8</span><span class="tech-badge">C#</span>
+              <span class="tech-badge">Entity Framework Core</span><span class="tech-badge">SQL Server</span>
+              <span class="tech-badge">SignalR</span><span class="tech-badge">JWT</span><span class="tech-badge">Docker</span>
+            </div>
+          </div>
+          <ul style="color:var(--text-muted); font-size:14px; margin-bottom:24px; padding-left:16px; line-height:1.6;">
+            <li>Xây dựng Dual-mode Authentication hỗ trợ cả JWT cho API và Cookie cho MVC.</li>
+            <li>Triển khai Repository + Service Pattern để tách biệt Business Logic.</li>
+            <li>Phát triển hệ thống tin nhắn và thông báo thời gian thực với 4 SignalR Hubs.</li>
+          </ul>
+
+          <div class="proj-links">
+            <a href="https://okemsocial.onrender.com/" target="_blank" rel="noopener" class="proj-link" aria-label="Live Demo">Live Demo ↗</a>
+            <a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener" class="proj-link" aria-label="View Source Code">Mã Nguồn (GitHub) ↗</a>
           </div>
         </div>
         
         <div>
-          <div class="proj-tech">
-            <span class="tech-badge">ASP.NET Core 8</span><span class="tech-badge">C#</span>
-            <span class="tech-badge">EF Core</span><span class="tech-badge">SQL Server</span>
-            <span class="tech-badge">SignalR</span><span class="tech-badge">JWT</span><span class="tech-badge">Docker</span>
-          </div>
-          <p class="proj-desc" style="font-size:14px;">Xây dựng dual-mode authentication (JWT + Cookie). Triển khai hệ thống chat và thông báo thời gian thực hỗ trợ nhiều kết nối đồng thời với SignalR.</p>
-          <div class="proj-links">
-            <a href="https://okemsocial.onrender.com/" target="_blank" rel="noopener" class="proj-link">Live Demo ↗</a>
-            <a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener" class="proj-link">Mã Nguồn (GitHub) ↗</a>
+          <div class="arch-diagram">
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Backend Architecture</span>
+            <div style="display:flex; gap:16px;">
+              <div class="arch-box">Web Client</div>
+              <div class="arch-box">Mobile Client</div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box accent">ASP.NET Core 8 Backend</div>
+            <div class="arch-arrow">↓</div>
+            <div style="display:flex; gap:16px;">
+              <div class="arch-box">Web API / MVC</div>
+              <div class="arch-box">SignalR Hubs</div>
+            </div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Service Layer</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">EF Core Repository</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">SQL Server (Docker)</div>
           </div>
         </div>
       </div>
@@ -324,34 +426,35 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="container">
-      <h2 class="sec-title"><span>03</span> Chuyên Môn</h2>
+      <h2 class="sec-title"><span>03</span> Technical Skills</h2>
       <div class="skills-grid">
-        <div class="skill-group fade-up">
-          <h4 class="skill-title">Nền tảng & Ngôn ngữ</h4>
+        <div class="skill-group primary fade-up">
+          <h4 class="skill-title">Primary Backend Stack</h4>
           <div class="skill-list">
-            <span class="skill-item">Java</span><span class="skill-item">C#</span><span class="skill-item">Python</span>
-            <span class="skill-item">JavaScript</span><span class="skill-item">OOP</span><span class="skill-item">Cấu trúc dữ liệu & Thuật toán</span>
+            <span class="skill-item">Java & Spring Boot</span>
+            <span class="skill-item">C# & ASP.NET Core</span>
+            <span class="skill-item">RESTful APIs</span>
+            <span class="skill-item">SQL Server</span>
+            <span class="skill-item">Entity Framework & JPA</span>
           </div>
         </div>
         <div class="skill-group fade-up" style="transition-delay: 0.1s;">
-          <h4 class="skill-title">Frameworks</h4>
+          <h4 class="skill-title">Secondary Technologies</h4>
           <div class="skill-list">
-            <span class="skill-item">Spring Boot</span><span class="skill-item">ASP.NET Core</span>
-            <span class="skill-item">MVC</span><span class="skill-item">Repository Pattern</span><span class="skill-item">Service Layer</span>
+            <span class="skill-item">PostgreSQL / MongoDB</span>
+            <span class="skill-item">SignalR (Real-time)</span>
+            <span class="skill-item">Authentication (JWT, OAuth)</span>
+            <span class="skill-item">Docker & Linux</span>
+            <span class="skill-item">Git & GitHub</span>
           </div>
         </div>
         <div class="skill-group fade-up" style="transition-delay: 0.2s;">
-          <h4 class="skill-title">Cơ sở dữ liệu & Tích hợp</h4>
+          <h4 class="skill-title">Supporting Technologies</h4>
           <div class="skill-list">
-            <span class="skill-item">SQL Server</span><span class="skill-item">PostgreSQL</span><span class="skill-item">MongoDB</span>
-            <span class="skill-item">RESTful API</span><span class="skill-item">JWT</span><span class="skill-item">SignalR</span>
-          </div>
-        </div>
-        <div class="skill-group fade-up" style="transition-delay: 0.3s;">
-          <h4 class="skill-title">DevOps & AI Tools</h4>
-          <div class="skill-list">
-            <span class="skill-item">Git / GitHub</span><span class="skill-item">Docker</span><span class="skill-item">Linux</span>
-            <span class="skill-item">ChatGPT</span><span class="skill-item">Claude</span><span class="skill-item">Gemini</span>
+            <span class="skill-item">Python / JavaScript</span>
+            <span class="skill-item">Data Structures & Algorithms</span>
+            <span class="skill-item">React (Basic Integration)</span>
+            <span class="skill-item">AI-assisted Development</span>
           </div>
         </div>
       </div>
@@ -361,14 +464,14 @@
   <!-- PUBLICATION -->
   <section id="publication">
     <div class="container">
-      <h2 class="sec-title"><span>04</span> Nghiên Cứu</h2>
+      <h2 class="sec-title"><span>04</span> Research & AI Integration</h2>
       <div class="research-card fade-up">
         <div class="research-icon">§</div>
         <div>
           <h3 class="research-title">Development of a Machine Learning-Based Duplicate Question Detection System</h3>
-          <div class="research-meta">Đồng tác giả · AI KING Scientific Workshop · Tháng 7, 2025</div>
-          <p class="research-desc">Đóng góp phát triển thuật toán và hệ thống tích hợp API cho nền tảng phát hiện câu hỏi trùng lặp bằng semantic similarity (Sentence-BERT và Cosine Similarity).</p>
-          <a href="https://drive.google.com/file/d/1eZ-oPYY1l1mS3XmeyZMAalcD21ptIior/view" target="_blank" rel="noopener" class="research-link">Đọc bài báo nghiên cứu ↗</a>
+          <div class="research-meta">Co-Author · AI KING Scientific Workshop · July 2025</div>
+          <p class="research-desc">Researched and integrated an AI module for duplicate detection using Semantic Similarity (Sentence-BERT and Cosine Similarity), bridging the gap between Machine Learning models and Backend API infrastructure.</p>
+          <a href="https://drive.google.com/file/d/1eZ-oPYY1l1mS3XmeyZMAalcD21ptIior/view" target="_blank" rel="noopener" class="research-link" aria-label="Read Research Paper">Đọc bài báo nghiên cứu ↗</a>
         </div>
       </div>
     </div>
@@ -377,13 +480,12 @@
   <!-- CONTACT -->
   <section id="contact" style="border-bottom: 1px solid var(--border);">
     <div class="container contact-section fade-up">
-      <h2 class="serif">Hợp tác & Kết nối</h2>
-      <p>Mình đang tìm kiếm cơ hội Backend Developer Internship. Nếu đội ngũ của bạn cần một kỹ sư trẻ chủ động, ham học và có tư duy hệ thống, hãy liên hệ với mình.</p>
+      <h2 class="serif">Let's Connect</h2>
+      <p>I am actively looking for Backend Developer Internship opportunities. If your team needs an engineer who understands systems, databases, and REST APIs, I would love to talk.</p>
       <div class="contact-links">
-        <a href="mailto:hoangquocfw@gmail.com" class="contact-link">hoangquocfw@gmail.com</a>
-        <a href="tel:+84325519172" class="contact-link">+84 325 519 172</a>
-        <a href="https://linkedin.com/in/hoangquoc1726768" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
-        <a href="https://github.com/hqcoder05" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+        <a href="https://github.com/hqcoder05" target="_blank" rel="noopener" class="btn btn-outline" aria-label="GitHub Profile">GitHub</a>
+        <a href="https://linkedin.com/in/hoangquoc1726768" target="_blank" rel="noopener" class="btn btn-outline" aria-label="LinkedIn Profile">LinkedIn</a>
+        <a href="mailto:hoangquocfw@gmail.com" class="btn btn-primary" aria-label="Email Me">Email Me</a>
       </div>
     </div>
   </section>
@@ -391,7 +493,7 @@
 
 <footer>
   <div class="container">
-    © 2026 Hoang Nguyen Viet Quoc. Kiến tạo bằng sự chỉn chu.
+    © 2026 Hoang Nguyen Viet Quoc. Backend Software Engineer.
   </div>
 </footer>
 
