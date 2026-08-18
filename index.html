@@ -270,7 +270,7 @@
       <div class="about-grid">
         <div class="about-text fade-up">
           <p>Mình là sinh viên IT năm cuối tại Đại học GTVT TP.HCM, tập trung vào backend engineering, database design, RESTful API và application architecture.</p>
-          <p>Trong các dự án team, mình tập trung vào database schema design, authentication và API implementation. Mình đã xây dựng một nền tảng social network end-to-end và tham gia phát triển hệ thống quản lý tích hợp công cụ phát hiện câu hỏi trùng lặp.</p>
+          <p>Trong các dự án team, mình tập trung vào database schema design, authentication và API implementation. Hiện tại mình đang phát triển ShiftSync, nền tảng tự động xếp lịch nhân sự, tập trung vào backend architecture, scheduling algorithms và concurrency control.</p>
           <p>Sử dụng AI tools (ChatGPT, Claude) để hỗ trợ research, debugging, documentation và exploration of unfamiliar technologies.</p>
         </div>
         <div class="profile-card fade-up" style="transition-delay: 0.1s;">
@@ -308,61 +308,87 @@
       <!-- Project 0: ShiftSync -->
       <div class="project-card fade-up">
         <div style="display: flex; flex-direction: column;">
-          <div class="proj-meta">Thực tập tốt nghiệp · <span style="color:#f0c950;">In Progress</span></div>
+          <div class="proj-meta">Workforce Scheduling Platform · <span style="color:#f0c950;">Active Development</span></div>
           <h3 class="proj-title"><a href="https://github.com/hqcoder05/ShiftSync" target="_blank" rel="noopener" aria-label="ShiftSync">ShiftSync ↗</a></h3>
           
-          <div class="proj-stats-grid">
+          <div class="proj-stats-grid" style="grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px;">
             <div class="proj-stat">
-              <span class="s-num">Auto-Scheduling & Marketplace</span>
-              <span class="s-lbl">Thuật toán xếp lịch tự động & xử lý đổi ca an toàn</span>
+              <span class="s-num">58</span>
+              <span class="s-lbl">REST Endpoints</span>
             </div>
             <div class="proj-stat">
-              <span class="s-num">Geofence & QR Attendance</span>
-              <span class="s-lbl">Chấm công bằng tọa độ GPS & QR Code động</span>
+              <span class="s-num">28</span>
+              <span class="s-lbl">Database Tables</span>
+            </div>
+            <div class="proj-stat">
+              <span class="s-num">10</span>
+              <span class="s-lbl">Backend Domains</span>
+            </div>
+            <div class="proj-stat">
+              <span class="s-num">48</span>
+              <span class="s-lbl">Git Commits</span>
             </div>
           </div>
           
           <div class="proj-tech-group">
             <div class="proj-tech">
-              <span class="tech-badge">Java 21</span><span class="tech-badge">Spring Boot</span>
-              <span class="tech-badge">PostgreSQL</span><span class="tech-badge">Redis</span>
-              <span class="tech-badge">Docker</span><span class="tech-badge">JWT</span>
+              <span class="tech-badge">Java 21</span><span class="tech-badge">Spring Boot 4.1.0</span>
+              <span class="tech-badge">PostgreSQL 16</span><span class="tech-badge">Redis 7</span>
+              <span class="tech-badge">Docker</span><span class="tech-badge">GitHub Actions CI</span>
             </div>
           </div>
-          <ul class="proj-bullets" style="margin-top: 16px;">
-            <li>Thiết kế <strong>Auto-Scheduling Algorithm</strong> với cơ chế hard/soft constraints (ưu tiên, kỹ năng, giờ công).</li>
-            <li>Xử lý Race Condition khi tranh lịch (Shift Swap/Marketplace) bằng <strong>Redis Distributed Lock</strong>.</li>
-            <li>Tích hợp chấm công bằng QR Code động và xác thực vị trí (Geofence) bằng <strong>thuật toán Haversine</strong>.</li>
-          </ul>
+
+          <div style="margin-bottom: 24px;">
+            <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 12px;">Engineering Highlights</h4>
+            <ul class="proj-bullets" style="margin-bottom: 0;">
+              <li><strong>Constraint-Based Scheduling:</strong> Automatic schedule generation using hard constraints (overlap, max hours, rest time) and configurable weighted scoring.</li>
+              <li><strong>Redis Distributed Lock:</strong> Prevents conflicting concurrent shift claims in the open shift marketplace using Redisson.</li>
+              <li><strong>QR + Geofence Attendance:</strong> JWT-signed, expiring QR tokens combined with GPS distance validation using the Haversine formula.</li>
+              <li><strong>Payroll Engine:</strong> Attendance-based payroll calculation with overtime rules, holiday multipliers, and PDF/Excel export.</li>
+            </ul>
+          </div>
           
           <div class="proj-links">
             <a href="https://github.com/hqcoder05/ShiftSync" target="_blank" rel="noopener" class="proj-link" aria-label="View Source Code">GitHub Repository ↗</a>
-            <a href="https://www.figma.com/design/Qss4tUQPpPzz6w2hERSSrL/Untitled?node-id=1-104&t=d5LDFGef5zzDwpGX-1" target="_blank" rel="noopener" class="proj-link" aria-label="Figma Design">UI/UX Design ↗</a>
           </div>
         </div>
         
         <div>
           <div class="arch-diagram">
             <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Architecture</span>
-            <div class="arch-box">Web / Mobile Client</div>
+            <div class="arch-box">Web / Mobile Clients</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box accent">Spring Boot API</div>
+            <div class="arch-box accent">Spring Boot REST API</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">Core Services</div>
+            <div style="display:flex; gap:8px; justify-content:center; width:100%;">
+              <div class="arch-box" style="min-width:60px; padding:4px 8px;">Auth</div>
+              <div class="arch-box" style="min-width:60px; padding:4px 8px;">Schedule</div>
+              <div class="arch-box" style="min-width:60px; padding:4px 8px;">Payroll</div>
+            </div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">PostgreSQL / Redis Cache</div>
+            <div class="arch-box">Service Layer</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Repository / JPA</div>
+            <div class="arch-arrow">↓</div>
+            <div style="display:flex; gap:8px; justify-content:center; width:100%;">
+              <div class="arch-box" style="min-width:90px; padding:4px 8px;">PostgreSQL</div>
+              <div class="arch-box" style="min-width:90px; padding:4px 8px;">Redis</div>
+            </div>
           </div>
+
           <div class="arch-diagram" style="margin-top: 16px;">
-            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Concurrency Control</span>
-            <div class="arch-box">Multiple Clients</div>
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Auto-Scheduling Flow</span>
+            <div class="arch-box">Shift Requirements</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box accent">Redis Distributed Lock</div>
+            <div class="arch-box">Hard Constraints (Overlap, Rest)</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">Safe Shift Allocation</div>
+            <div class="arch-box accent">Weighted Scoring (Skill, Hours)</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Schedule Assignment</div>
           </div>
         </div>
       </div>
-
+      
       <!-- Project 1: QBCA -->
       <div class="project-card fade-up">
         <div style="display: flex; flex-direction: column;">
