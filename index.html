@@ -338,10 +338,10 @@
           <div style="margin-bottom: 24px;">
             <h4 style="font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 12px;">Engineering Highlights</h4>
             <ul class="proj-bullets" style="margin-bottom: 0;">
-              <li><strong>Constraint-Based Scheduling:</strong> Automatic schedule generation using hard constraints (overlap, max hours, rest time) and configurable weighted scoring.</li>
-              <li><strong>Redis Distributed Lock:</strong> Prevents conflicting concurrent shift claims in the open shift marketplace using Redisson.</li>
-              <li><strong>QR + Geofence Attendance:</strong> JWT-signed, expiring QR tokens combined with GPS distance validation using the Haversine formula.</li>
-              <li><strong>Payroll Engine:</strong> Attendance-based payroll calculation with overtime rules, holiday multipliers, and PDF/Excel export.</li>
+              <li><strong>Thuật toán Xếp lịch (Constraint-Based):</strong> Tự động sinh ca làm dựa trên hard constraints (chống trùng ca, giờ làm tối đa, thời gian nghỉ) và custom weighted scoring.</li>
+              <li><strong>Redis Distributed Lock:</strong> Tránh race condition (nhận trùng ca làm) khi nhiều nhân sự cùng thao tác trong tính năng Open Shift Marketplace.</li>
+              <li><strong>Chấm công QR + Geofence:</strong> Sử dụng JWT tạo mã QR chống giả mạo có thời hạn 5 phút, kết hợp tính khoảng cách GPS bằng thuật toán Haversine ở phía backend.</li>
+              <li><strong>Hệ thống tính lương (Payroll):</strong> Xử lý state machine, tính toán tự động dựa trên dữ liệu điểm danh, luật Overtime/Lễ và hỗ trợ xuất file PDF/Excel.</li>
             </ul>
           </div>
           
