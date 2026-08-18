@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,10 +91,13 @@
   .btn-primary:hover { background: transparent; color: var(--accent); }
   .btn-outline { background: transparent; color: var(--accent); }
   .btn-outline:hover { background: var(--accent); color: #000; }
+  .btn.disabled { opacity: 0.5; cursor: not-allowed; border-color: var(--text-dim); color: var(--text-dim); }
+  .btn.disabled:hover { background: transparent; color: var(--text-dim); }
   
   .hero-stats { display: flex; gap: 48px; margin-top: 64px; border-top: 1px solid var(--border); padding-top: 40px; flex-wrap: wrap; }
   .stat-item .num { font-size: 32px; font-family: 'Playfair Display', serif; color: var(--text-main); margin-bottom: 4px; }
-  .stat-item .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
+  .stat-item .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+  .stat-item .context { font-size: 11px; color: var(--text-dim); margin-top: 4px; display: block; }
 
   /* Sections */
   section { padding: 120px 0; border-top: 1px solid var(--border); }
@@ -229,33 +232,32 @@
   <section class="hero" id="top" style="border-top:none;">
     <div class="container">
       <div class="hero-content fade-up">
-        <span class="kicker">Backend Developer</span>
-        <h1>Building robust <i>backend systems.</i></h1>
-        <p>IT student focused on backend development, REST APIs, database design, authentication, and real-time systems.</p>
+        <span class="kicker">Backend Developer / Backend Software Engineer</span>
+        <h1>Kiến tạo hệ thống <i>bền vững.</i></h1>
+        <p>Sinh viên IT tập trung vào backend development, REST APIs, database design, authentication và real-time systems.</p>
         <div class="hero-tech">Java · Spring Boot · C# · ASP.NET Core · SQL Server</div>
         
         <div style="display:flex; gap:16px;">
-          <a href="#projects" class="btn btn-primary" aria-label="View Projects">View Projects</a>
-          <!-- <a href="#contact" class="btn btn-outline" aria-label="Contact">Contact Me</a> -->
-          <!-- TODO: Add Resume CTA here once a valid resume.pdf is uploaded to the repository -->
+          <a href="#projects" class="btn btn-primary" aria-label="View Projects">Xem Dự Án</a>
+          <!-- No valid CV file in repository, keeping CTA disabled/placeholder -->
+          <button class="btn btn-outline disabled" aria-disabled="true" title="CV đang cập nhật">Xem CV</button>
         </div>
         
         <div class="hero-stats">
           <div class="stat-item">
             <div class="num">56</div>
-            <div class="label">REST API Endpoints</div>
+            <div class="label">API Endpoints</div>
+            <span class="context">Across 2 Backend Projects</span>
           </div>
           <div class="stat-item">
             <div class="num">2</div>
-            <div class="label">Backend Systems Shipped</div>
+            <div class="label">Backend Systems</div>
+            <span class="context">Shipped & Deployed</span>
           </div>
           <div class="stat-item">
             <div class="num">41%</div>
-            <div class="label">Team Commit Share</div>
-          </div>
-          <div class="stat-item">
-            <div class="num">1</div>
-            <div class="label">Research Publication</div>
+            <div class="label">Team Commits</div>
+            <span class="context">Backend contribution in a 3-person team</span>
           </div>
         </div>
       </div>
@@ -265,33 +267,33 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
-      <h2 class="sec-title"><span>01</span> About Me</h2>
+      <h2 class="sec-title"><span>01</span> Về Bản Thân</h2>
       <div class="about-grid">
         <div class="about-text fade-up">
-          <p>I am an IT student at Ho Chi Minh City University of Transport, focusing entirely on <strong>backend software engineering</strong>.</p>
-          <p>My practical experience includes designing relational database schemas, implementing role-based authorization, building REST APIs, and integrating real-time communication. I developed a complete solo backend project (OkemSocial) and contributed 41% of backend commits in a 3-person team project (Course Management System).</p>
-          <p>I use AI tools (ChatGPT, Claude) to accelerate research, debugging, documentation, and API integration workflows.</p>
+          <p>Mình là sinh viên IT năm cuối tại Đại học GTVT TP.HCM, tập trung vào backend engineering, database design, RESTful API và application architecture.</p>
+          <p>Trong các dự án team, mình tập trung vào database schema design, authentication và API implementation. Mình đã xây dựng một nền tảng social network end-to-end và tham gia phát triển hệ thống quản lý tích hợp công cụ phát hiện câu hỏi trùng lặp.</p>
+          <p>Sử dụng AI tools (ChatGPT, Claude) để hỗ trợ research, debugging, documentation và exploration of unfamiliar technologies.</p>
         </div>
         <div class="profile-card fade-up" style="transition-delay: 0.1s;">
           <div class="profile-row">
-            <span class="profile-label">Role</span>
+            <span class="profile-label">Vai trò</span>
             <span class="profile-val">Backend Developer</span>
           </div>
           <div class="profile-row">
-            <span class="profile-label">Education</span>
+            <span class="profile-label">Học vấn</span>
             <span class="profile-val">IT · GPA 3.19/4.0</span>
           </div>
           <div class="profile-row">
-            <span class="profile-label">Graduation</span>
-            <span class="profile-val">September 2027</span>
+            <span class="profile-label">Tốt nghiệp</span>
+            <span class="profile-val">Tháng 9, 2027</span>
           </div>
           <div class="profile-row">
-            <span class="profile-label">Languages</span>
-            <span class="profile-val">Vietnamese, English (TOEIC 785)</span>
+            <span class="profile-label">Ngoại ngữ</span>
+            <span class="profile-val">Tiếng Việt, Tiếng Anh (TOEIC 785)</span>
           </div>
           <div class="profile-row">
-            <span class="profile-label">Status</span>
-            <span class="profile-val" style="color:var(--accent);">Available for Internship</span>
+            <span class="profile-label">Trạng thái</span>
+            <span class="profile-val" style="color:var(--accent);">Tìm kiếm Thực tập</span>
           </div>
         </div>
       </div>
@@ -301,7 +303,7 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="container">
-      <h2 class="sec-title"><span>02</span> Technical Projects</h2>
+      <h2 class="sec-title"><span>02</span> Dự Án Kỹ Thuật</h2>
 
       <!-- Project 1: QBCA -->
       <div class="project-card fade-up">
@@ -312,7 +314,7 @@
           <div class="proj-stats-grid">
             <div class="proj-stat">
               <span class="s-num">21 REST API endpoints</span>
-              <span class="s-lbl">Question management, authentication, approval workflow, AI duplicate detection</span>
+              <span class="s-lbl">Authentication, question management, approval workflow, AI duplicate detection</span>
             </div>
             <div class="proj-stat">
               <span class="s-num">41% of team commits</span>
@@ -323,14 +325,14 @@
           <div class="proj-tech-group">
             <div class="proj-tech">
               <span class="tech-badge">Java</span><span class="tech-badge">Spring Boot</span>
-              <span class="tech-badge">Spring Security</span><span class="tech-badge">JPA</span>
-              <span class="tech-badge">SQL Server</span>
+              <span class="tech-badge">Spring Security</span><span class="tech-badge">Spring Data JPA</span>
+              <span class="tech-badge">SQL Server</span><span class="tech-badge">REST API</span>
             </div>
           </div>
           <ul class="proj-bullets">
-            <li>Designed relational database schemas and implemented role-based access control (RBAC).</li>
-            <li>Built REST APIs for authentication, authorization, and subject-related workflows.</li>
-            <li>Integrated AI-based duplicate question detection via an external API.</li>
+            <li>Database schema design và triển khai Role-Based Access Control (RBAC).</li>
+            <li>Backend REST APIs xử lý authentication, authorization và workflows quản lý.</li>
+            <li>Tích hợp module AI duplicate-question detection thông qua external API.</li>
           </ul>
           
           <div class="proj-links">
@@ -340,7 +342,7 @@
         
         <div>
           <div class="arch-diagram">
-            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Backend Architecture</span>
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Architecture</span>
             <div class="arch-box">React Frontend</div>
             <div class="arch-arrow">↓</div>
             <div class="arch-box accent">Spring Boot REST API</div>
@@ -349,7 +351,7 @@
             <div class="arch-arrow">↓</div>
             <div class="arch-box">Service</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">Repository / JPA</div>
+            <div class="arch-box">JPA / Repository</div>
             <div class="arch-arrow">↓</div>
             <div class="arch-box">SQL Server</div>
           </div>
@@ -357,9 +359,7 @@
             <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">AI Integration</span>
             <div class="arch-box">Backend Service</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">AI Detection API</div>
-            <div class="arch-arrow">↓</div>
-            <div class="arch-box accent">Duplicate Detection</div>
+            <div class="arch-box accent">AI Detection API</div>
           </div>
         </div>
       </div>
@@ -377,21 +377,21 @@
             </div>
             <div class="proj-stat">
               <span class="s-num">10 tables & 4 Hubs</span>
-              <span class="s-lbl">SQL Server Database & SignalR Real-time</span>
+              <span class="s-lbl">SQL Server Database & SignalR</span>
             </div>
           </div>
           
           <div class="proj-tech-group">
             <h4>Backend</h4>
             <div class="proj-tech">
-              <span class="tech-badge">ASP.NET Core 8</span><span class="tech-badge">REST API</span>
+              <span class="tech-badge">ASP.NET Core 8</span><span class="tech-badge">REST APIs</span>
               <span class="tech-badge">Service Layer</span><span class="tech-badge">Repository Pattern</span>
             </div>
           </div>
           <div class="proj-tech-group">
             <h4>Security</h4>
             <div class="proj-tech">
-              <span class="tech-badge">JWT</span><span class="tech-badge">Cookie Authentication</span><span class="tech-badge">Role-Based Authorization</span>
+              <span class="tech-badge">JWT</span><span class="tech-badge">Cookie authentication</span>
             </div>
           </div>
           <div class="proj-tech-group">
@@ -408,9 +408,9 @@
           </div>
 
           <ul class="proj-bullets" style="margin-top: 16px;">
-            <li>Developed a complete solo backend system using ASP.NET Core and SQL Server.</li>
-            <li>Implemented real-time messaging and notifications using SignalR.</li>
-            <li>Built dual-mode authentication supporting both JWT for APIs and Cookies for MVC.</li>
+            <li>Database design, JWT + Cookie authentication cho nền tảng social.</li>
+            <li>Triển khai hệ thống chat và thông báo thời gian thực bằng SignalR.</li>
+            <li>Xây dựng hoàn chỉnh REST APIs và backend logic.</li>
           </ul>
 
           <div class="proj-links">
@@ -421,7 +421,7 @@
         
         <div>
           <div class="arch-diagram">
-            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Backend Architecture</span>
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Architecture</span>
             <div class="arch-box">Client</div>
             <div class="arch-arrow">↓</div>
             <div class="arch-box accent">ASP.NET Core API</div>
@@ -430,17 +430,17 @@
             <div class="arch-arrow">↓</div>
             <div class="arch-box">Service</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">Repository / EF Core</div>
+            <div class="arch-box">EF Core / Repository</div>
             <div class="arch-arrow">↓</div>
             <div class="arch-box">SQL Server</div>
           </div>
           <div class="arch-diagram" style="margin-top: 16px;">
-            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Real-time Layer</span>
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Real-time</span>
             <div class="arch-box">Client</div>
             <div class="arch-arrow">↕</div>
             <div class="arch-box accent">SignalR Hub</div>
             <div class="arch-arrow">↓</div>
-            <div class="arch-box">Real-time messaging / notifications</div>
+            <div class="arch-box">Messaging / Notifications</div>
           </div>
         </div>
       </div>
@@ -478,7 +478,8 @@
             <span class="skill-item">SQL Server</span>
             <span class="skill-item">PostgreSQL</span>
             <span class="skill-item">MongoDB</span>
-            <span class="skill-item">JPA / EF Core</span>
+            <span class="skill-item">JPA</span>
+            <span class="skill-item">Entity Framework Core</span>
           </div>
         </div>
         <div class="skill-group fade-up">
@@ -491,7 +492,7 @@
           </div>
         </div>
         <div class="skill-group fade-up" style="transition-delay: 0.1s;">
-          <h4 class="skill-title">Infrastructure & Tools</h4>
+          <h4 class="skill-title">Infrastructure</h4>
           <div class="skill-list">
             <span class="skill-item">Docker</span>
             <span class="skill-item">Linux</span>
@@ -500,7 +501,7 @@
           </div>
         </div>
         <div class="skill-group fade-up" style="transition-delay: 0.2s;">
-          <h4 class="skill-title">Supporting Technologies</h4>
+          <h4 class="skill-title">Supporting</h4>
           <div class="skill-list">
             <span class="skill-item">Python</span>
             <span class="skill-item">JavaScript</span>
@@ -511,7 +512,7 @@
       
       <div class="skills-grid" style="grid-template-columns: 1fr; margin-top: 32px;">
         <div class="skill-group fade-up">
-          <h4 class="skill-title">Development Tools</h4>
+          <h4 class="skill-title">Supporting / Development Tools</h4>
           <div class="skill-list" style="flex-direction: row; gap: 24px; flex-wrap: wrap;">
             <span class="skill-item">AI-assisted development</span>
             <span class="skill-item">ChatGPT</span>
@@ -545,10 +546,10 @@
       <h2 class="serif">Let's Connect</h2>
       <p>I am actively looking for Backend Developer Internship opportunities. If your team needs an engineer who understands systems, databases, and REST APIs, I would love to talk.</p>
       <div class="contact-links">
-        <!-- TODO: Add "View Resume" link here once resume.pdf is uploaded -->
+        <button class="btn btn-outline disabled" aria-disabled="true" title="CV đang cập nhật">CV</button>
         <a href="https://github.com/hqcoder05" target="_blank" rel="noopener" class="btn btn-outline" aria-label="GitHub Profile">GitHub</a>
         <a href="https://linkedin.com/in/hoangquoc1726768" target="_blank" rel="noopener" class="btn btn-outline" aria-label="LinkedIn Profile">LinkedIn</a>
-        <a href="mailto:hoangquocfw@gmail.com" class="btn btn-primary" aria-label="Email Me">Email Me</a>
+        <a href="mailto:hoangquocfw@gmail.com" class="btn btn-primary" aria-label="Email Me">Email</a>
       </div>
     </div>
   </section>
