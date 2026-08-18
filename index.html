@@ -246,10 +246,10 @@
           <div class="stat-item">
             <div class="num">56</div>
             <div class="label">API Endpoints</div>
-            <span class="context">Across 2 Backend Projects</span>
+            <span class="context">Across 3 Backend Projects</span>
           </div>
           <div class="stat-item">
-            <div class="num">2</div>
+            <div class="num">3</div>
             <div class="label">Backend Systems</div>
             <span class="context">Shipped & Deployed</span>
           </div>
@@ -303,6 +303,65 @@
   <section id="projects">
     <div class="container">
       <h2 class="sec-title"><span>02</span> Dự Án Kỹ Thuật</h2>
+
+      
+      <!-- Project 0: ShiftSync -->
+      <div class="project-card fade-up">
+        <div style="display: flex; flex-direction: column;">
+          <div class="proj-meta">Thực tập tốt nghiệp · <span style="color:#f0c950;">In Progress</span></div>
+          <h3 class="proj-title"><a href="https://github.com/hqcoder05/ShiftSync" target="_blank" rel="noopener" aria-label="ShiftSync">ShiftSync ↗</a></h3>
+          
+          <div class="proj-stats-grid">
+            <div class="proj-stat">
+              <span class="s-num">Auto-Scheduling & Marketplace</span>
+              <span class="s-lbl">Thuật toán xếp lịch tự động & xử lý đổi ca an toàn</span>
+            </div>
+            <div class="proj-stat">
+              <span class="s-num">Geofence & QR Attendance</span>
+              <span class="s-lbl">Chấm công bằng tọa độ GPS & QR Code động</span>
+            </div>
+          </div>
+          
+          <div class="proj-tech-group">
+            <div class="proj-tech">
+              <span class="tech-badge">Java 21</span><span class="tech-badge">Spring Boot</span>
+              <span class="tech-badge">PostgreSQL</span><span class="tech-badge">Redis</span>
+              <span class="tech-badge">Docker</span><span class="tech-badge">JWT</span>
+            </div>
+          </div>
+          <ul class="proj-bullets" style="margin-top: 16px;">
+            <li>Thiết kế <strong>Auto-Scheduling Algorithm</strong> với cơ chế hard/soft constraints (ưu tiên, kỹ năng, giờ công).</li>
+            <li>Xử lý Race Condition khi tranh lịch (Shift Swap/Marketplace) bằng <strong>Redis Distributed Lock</strong>.</li>
+            <li>Tích hợp chấm công bằng QR Code động và xác thực vị trí (Geofence) bằng <strong>thuật toán Haversine</strong>.</li>
+          </ul>
+          
+          <div class="proj-links">
+            <a href="https://github.com/hqcoder05/ShiftSync" target="_blank" rel="noopener" class="proj-link" aria-label="View Source Code">GitHub Repository ↗</a>
+            <a href="https://www.figma.com/design/Qss4tUQPpPzz6w2hERSSrL/Untitled?node-id=1-104&t=d5LDFGef5zzDwpGX-1" target="_blank" rel="noopener" class="proj-link" aria-label="Figma Design">UI/UX Design ↗</a>
+          </div>
+        </div>
+        
+        <div>
+          <div class="arch-diagram">
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Architecture</span>
+            <div class="arch-box">Web / Mobile Client</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box accent">Spring Boot API</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Core Services</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">PostgreSQL / Redis Cache</div>
+          </div>
+          <div class="arch-diagram" style="margin-top: 16px;">
+            <span style="color:var(--text-main); font-weight:500; font-family:'Inter', sans-serif;">Concurrency Control</span>
+            <div class="arch-box">Multiple Clients</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box accent">Redis Distributed Lock</div>
+            <div class="arch-arrow">↓</div>
+            <div class="arch-box">Safe Shift Allocation</div>
+          </div>
+        </div>
+      </div>
 
       <!-- Project 1: QBCA -->
       <div class="project-card fade-up">
