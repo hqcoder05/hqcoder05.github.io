@@ -3,401 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoang Nguyen Viet Quoc — Backend Engineering Intern</title>
+<title>Hoang Nguyen Viet Quoc — Backend Software Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #06090C;
-    --surface: #0D1318;
-    --surface-2: #131B22;
-    --surface-3: #1A242D;
-    --line: #202B34;
-    --line-soft: #161E26;
-    --text: #E4EAEE;
-    --muted: #7C8894;
-    --dim: #4A555F;
-    --accent: #4FD1C5;
-    --accent-soft: rgba(79,209,197,0.12);
-    --accent-dim: #235F58;
-    --amber: #E8B85C;
-    --coral: #E38B6B;
+  :root {
+    --bg: #0d0d0d;
+    --surface: #141414;
+    --surface-hover: #1a1a1a;
+    --border: #262626;
+    --border-light: #333333;
+    --text-main: #f0f0f0;
+    --text-muted: #9e9e9e;
+    --text-dim: #666666;
+    --accent: #d4af37; /* Elegant Gold */
+    --accent-hover: #f0c950;
+    --accent-dim: rgba(212, 175, 55, 0.1);
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 300;
   }
-  ::selection{background:var(--accent); color:#06090C;}
-  .mono{font-family:'JetBrains Mono',monospace;}
-  .disp{font-family:'Space Grotesk',sans-serif;}
-  a{color:inherit; text-decoration:none;}
-  .wrap{max-width:960px; margin:0 auto; padding:0 28px; position:relative;}
+  ::selection { background: var(--accent); color: #000; }
+  a { color: inherit; text-decoration: none; transition: all 0.3s ease; }
+  
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; }
+  
+  /* Typography */
+  h1, h2, h3, .serif { font-family: 'Playfair Display', serif; font-weight: 400; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  
+  /* Header */
+  header {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(13, 13, 13, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    height: 80px;
+  }
+  .logo { font-size: 20px; letter-spacing: 1px; color: var(--text-main); }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); }
+  .nav-links a:hover { color: var(--accent); }
+  
+  /* Hero */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+  .hero-content { max-width: 800px; }
+  .kicker { font-size: 13px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 24px; display: block; }
+  .hero h1 { font-size: clamp(40px, 6vw, 72px); line-height: 1.1; margin-bottom: 32px; letter-spacing: -0.5px; }
+  .hero h1 i { color: var(--accent); }
+  .hero p { font-size: 18px; color: var(--text-muted); max-width: 650px; margin-bottom: 40px; }
+  
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 32px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
+    border: 1px solid var(--accent); border-radius: 0; transition: all 0.3s;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { background: transparent; color: var(--accent); }
+  .btn-outline { background: transparent; color: var(--accent); }
+  .btn-outline:hover { background: var(--accent); color: #000; }
+  
+  .hero-stats { display: flex; gap: 48px; margin-top: 64px; border-top: 1px solid var(--border); padding-top: 40px; }
+  .stat-item .num { font-size: 32px; font-family: 'Playfair Display', serif; color: var(--text-main); margin-bottom: 4px; }
+  .stat-item .label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dim); }
 
-  /* ===== ambient background ===== */
-  .bg-fixed{position:fixed; inset:0; z-index:0; pointer-events:none;}
-  .bg-grid{
-    position:absolute; inset:0;
-    background-image:
-      linear-gradient(rgba(79,209,197,0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(79,209,197,0.045) 1px, transparent 1px);
-    background-size:56px 56px;
-    mask-image: radial-gradient(ellipse 70% 45% at 50% 0%, #000 30%, transparent 90%);
-  }
-  .bg-glow{
-    position:absolute; top:-200px; left:50%; transform:translateX(-50%);
-    width:900px; height:600px;
-    background:radial-gradient(ellipse at center, rgba(79,209,197,0.10), transparent 70%);
-  }
-  canvas#net{position:absolute; top:0; left:0; width:100%; height:520px; opacity:0.5;}
+  /* Sections */
+  section { padding: 120px 0; border-top: 1px solid var(--border); }
+  .sec-title { font-size: 36px; margin-bottom: 64px; display: flex; align-items: center; gap: 24px; }
+  .sec-title::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  .sec-title span { color: var(--accent); font-size: 16px; font-family: 'Inter', sans-serif; letter-spacing: 2px; }
 
-  /* ===== progress bar ===== */
-  .progress{position:fixed; top:0; left:0; height:2px; background:var(--accent); z-index:100; width:0%; transition:width .1s linear;}
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start; }
+  .about-text p { margin-bottom: 24px; color: var(--text-muted); font-size: 16px; }
+  .about-text strong { color: var(--text-main); font-weight: 500; }
+  .profile-card { background: var(--surface); border: 1px solid var(--border); padding: 32px; }
+  .profile-row { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--border-light); font-size: 14px; }
+  .profile-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .profile-label { color: var(--text-muted); }
+  .profile-val { color: var(--text-main); text-align: right; }
 
-  /* ===== NAV ===== */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:rgba(6,9,12,0.82);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line-soft);
+  /* Projects */
+  .project-card { 
+    display: grid; grid-template-columns: 3fr 4fr; gap: 48px; 
+    margin-bottom: 80px; padding: 48px; 
+    background: var(--surface); border: 1px solid var(--border);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
   }
-  nav{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:15px 28px; max-width:960px; margin:0 auto;
+  .project-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-color: var(--border-light); }
+  
+  .proj-meta { margin-bottom: 16px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); }
+  .proj-title { font-size: 28px; margin-bottom: 24px; }
+  .proj-title a { color: var(--text-main); }
+  .proj-title a:hover { color: var(--accent); }
+  .proj-desc { color: var(--text-muted); margin-bottom: 32px; }
+  
+  .proj-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px; }
+  .proj-stat .s-num { font-size: 24px; font-family: 'Playfair Display', serif; color: var(--text-main); }
+  .proj-stat .s-lbl { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+  
+  .proj-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .tech-badge { font-size: 12px; padding: 6px 12px; border: 1px solid var(--border-light); color: var(--text-muted); }
+  
+  .proj-links { display: flex; gap: 16px; }
+  .proj-link { 
+    font-size: 13px; text-transform: uppercase; letter-spacing: 1px; 
+    display: inline-flex; align-items: center; gap: 8px; 
+    border-bottom: 1px solid var(--accent); padding-bottom: 4px; color: var(--text-main);
   }
-  .logo{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:14px; display:flex; align-items:center; gap:8px;}
-  .logo-badge{
-    width:22px; height:22px; border-radius:6px; background:var(--accent-soft); border:1px solid var(--accent-dim);
-    display:flex; align-items:center; justify-content:center; color:var(--accent); font-size:11px; font-weight:800;
-  }
-  .navlinks{display:flex; gap:2px; font-family:'JetBrains Mono',monospace; font-size:12.5px;}
-  .navlinks a{
-    padding:7px 13px; color:var(--muted); border-radius:4px;
-    transition:color .15s, background .15s; position:relative;
-  }
-  .navlinks a:hover{color:var(--accent); background:var(--surface);}
-  .navlinks a::before{content:"/"; color:var(--accent-dim); margin-right:1px;}
-  .nav-cta{
-    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;
-    border:1px solid var(--accent-dim); color:var(--accent);
-    padding:8px 15px; border-radius:4px;
-    transition:all .18s;
-    display:flex; align-items:center; gap:7px;
-  }
-  .nav-cta .pulse{width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 0 rgba(79,209,197,0.6); animation:pulse 2s infinite;}
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(79,209,197,0.55);}
-    70%{box-shadow:0 0 0 7px rgba(79,209,197,0);}
-    100%{box-shadow:0 0 0 0 rgba(79,209,197,0);}
-  }
-  .nav-cta:hover{background:var(--accent); color:#06090C; border-color:var(--accent);}
-  .nav-cta:hover .pulse{background:#06090C;}
+  .proj-link:hover { color: var(--accent); }
+  .proj-link.disabled { border-color: var(--text-dim); color: var(--text-dim); cursor: not-allowed; }
 
-  /* ===== HERO ===== */
-  .hero{position:relative; z-index:1; padding:88px 0 64px;}
-  .hero-top{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:40px;}
-  .kicker{
-    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--accent);
-    display:flex; align-items:center; gap:10px; margin-bottom:20px;
-  }
-  .kicker .line{width:32px; height:1px; background:var(--accent-dim);}
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .skill-group { padding: 32px; border: 1px solid var(--border); background: var(--surface); }
+  .skill-title { font-size: 16px; margin-bottom: 24px; color: var(--accent); text-transform: uppercase; letter-spacing: 1.5px; }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 12px; }
+  .skill-item { font-size: 14px; color: var(--text-main); }
+  .skill-item:not(:last-child)::after { content: "•"; color: var(--border-light); margin-left: 12px; }
 
-  .hero h1{
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(38px, 6.4vw, 68px);
-    font-weight:700;
-    line-height:1.02;
-    letter-spacing:-0.02em;
-    margin-bottom:20px;
-  }
-  .hero h1 .accent-word{color:var(--accent); position:relative; display:inline-block;}
-  .hero h1 .accent-word::after{
-    content:""; position:absolute; left:0; bottom:6px; width:100%; height:10px;
-    background:var(--accent-soft); z-index:-1; border-radius:2px;
-  }
-  .hero .sub{
-    font-size:17px; color:var(--muted); max-width:600px; margin-bottom:32px;
-  }
-  .hero .sub strong{color:var(--text); font-weight:600;}
+  /* Research */
+  .research-card { padding: 40px; border: 1px solid var(--border); background: var(--surface); display: flex; gap: 32px; align-items: flex-start; }
+  .research-icon { font-size: 32px; color: var(--accent); font-family: 'Playfair Display', serif; font-style: italic; }
+  .research-title { font-size: 20px; margin-bottom: 12px; }
+  .research-meta { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .research-desc { color: var(--text-muted); margin-bottom: 24px; }
+  .research-link { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 4px; }
 
-  .hero-ctas{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:56px;}
-  .btn{
-    font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600;
-    padding:13px 22px; border-radius:5px;
-    display:inline-flex; align-items:center; gap:9px;
-    transition:transform .18s, box-shadow .18s, background .18s;
-  }
-  .btn-primary{background:var(--accent); color:#06090C;}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 12px 32px -10px rgba(79,209,197,0.55);}
-  .btn-ghost{border:1px solid var(--line); color:var(--text);}
-  .btn-ghost:hover{border-color:var(--accent-dim); background:var(--surface); transform:translateY(-2px);}
+  /* Contact */
+  .contact-section { text-align: center; padding: 160px 0; }
+  .contact-section h2 { font-size: 48px; margin-bottom: 24px; }
+  .contact-section p { color: var(--text-muted); max-width: 500px; margin: 0 auto 48px; }
+  .contact-links { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .contact-link { font-size: 15px; color: var(--text-main); display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
+  .contact-link:hover { color: var(--accent); }
 
-  /* terminal */
-  .console{
-    background:var(--surface);
-    border:1px solid var(--line);
-    border-radius:8px;
-    overflow:hidden;
-    box-shadow:0 30px 80px -30px rgba(0,0,0,0.7);
-  }
-  .console-bar{
-    display:flex; align-items:center; gap:8px;
-    padding:11px 16px;
-    background:var(--surface-2);
-    border-bottom:1px solid var(--line);
-  }
-  .console-dot{width:9px; height:9px; border-radius:50%; background:#2A343D;}
-  .console-title{margin-left:8px; font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted);}
-  .console-body{padding:22px 26px 26px; font-family:'JetBrains Mono',monospace; font-size:13.5px; min-height:150px;}
-  .cl{color:var(--muted); margin-bottom:7px; opacity:0; animation:fadeUp .4s ease forwards;}
-  .cl .prompt{color:var(--accent);}
-  .cl .ok{color:#7FE0A8;}
-  .cl .key{color:var(--coral);}
-  .cl .val{color:var(--text);}
-  @keyframes fadeUp{from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);}}
-  .cursor{
-    display:inline-block; width:7px; height:15px; background:var(--accent);
-    animation:blink 1s step-end infinite; vertical-align:text-bottom; margin-left:2px;
-  }
-  @keyframes blink{50%{opacity:0;}}
+  footer { text-align: center; padding: 40px 0; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-dim); letter-spacing: 0.5px; }
 
-  .stat-strip{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line);}
-  .stat-strip div{padding:16px; text-align:center; border-right:1px solid var(--line);}
-  .stat-strip div:last-child{border-right:none;}
-  .stat-strip .n{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:20px; color:var(--accent);}
-  .stat-strip .l{font-size:10px; color:var(--dim); text-transform:uppercase; letter-spacing:.05em; margin-top:3px;}
+  /* Animations */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  /* ===== SECTION shared ===== */
-  section{position:relative; z-index:1; padding:76px 0; border-top:1px solid var(--line-soft);}
-  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:36px; flex-wrap:wrap;}
-  .sec-num{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--accent-dim); font-weight:700;}
-  h2.sec-title{font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; letter-spacing:-0.01em;}
-  .sec-line{flex:1; height:1px; background:var(--line); align-self:center; min-width:40px;}
-
-  /* ===== ABOUT ===== */
-  .about-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:44px; align-items:start;}
-  .about-text p{color:var(--muted); font-size:15.5px; margin-bottom:16px;}
-  .about-text strong{color:var(--text); font-weight:600;}
-  .about-text .drop{
-    font-family:'Space Grotesk',sans-serif; font-size:56px; font-weight:700; color:var(--accent);
-    float:left; line-height:0.8; margin:8px 8px 0 0;
+  @media (max-width: 900px) {
+    .project-card { grid-template-columns: 1fr; padding: 32px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 40px; }
+    .hero-stats { flex-wrap: wrap; gap: 32px; }
+    .skills-grid { grid-template-columns: 1fr; }
   }
-  .stack-box{
-    background:var(--surface); border:1px solid var(--line); border-radius:8px; overflow:hidden;
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .research-card { flex-direction: column; gap: 16px; }
   }
-  .stack-box .head{
-    padding:12px 18px; background:var(--surface-2); border-bottom:1px solid var(--line);
-    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted); display:flex; justify-content:space-between;
-  }
-  .stack-box .body{padding:18px;}
-  .kv{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--line-soft); font-size:13px;}
-  .kv:last-child{border-bottom:none;}
-  .kv .key{color:var(--muted); font-family:'JetBrains Mono',monospace;}
-  .kv .val{color:var(--text); font-weight:500; text-align:right;}
-  .kv .val.ok{color:#7FE0A8;}
-
-  /* ===== PROJECTS ===== */
-  .proj{
-    background:var(--surface); border:1px solid var(--line); border-radius:8px;
-    padding:0; margin-bottom:22px; overflow:hidden;
-    transition:border-color .25s, transform .25s, box-shadow .25s;
-    cursor:pointer;
-  }
-  .proj:hover{border-color:var(--accent-dim); transform:translateY(-3px); box-shadow:0 20px 50px -24px rgba(0,0,0,0.6);}
-  .proj-inner{padding:28px 28px 24px;}
-  .proj-head{display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:12px;}
-  .proj-tag{
-    font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--accent);
-    background:var(--accent-soft); border:1px solid var(--accent-dim);
-    padding:3px 9px; border-radius:20px; margin-bottom:10px; display:inline-block;
-  }
-  .proj-name{font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:700;}
-  .proj-date{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--dim); white-space:nowrap; margin-top:6px;}
-  .proj-desc{color:var(--muted); font-size:14.5px; margin-bottom:20px; max-width:640px;}
-  .proj-stats{display:flex; gap:28px; flex-wrap:wrap; margin-bottom:18px;}
-  .stat .num{font-family:'JetBrains Mono',monospace; font-size:22px; font-weight:700; color:var(--accent); line-height:1;}
-  .stat .lbl{font-size:10.5px; color:var(--dim); text-transform:uppercase; letter-spacing:.05em; margin-top:4px;}
-  .tech-row{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:18px;}
-  .tech{
-    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--muted);
-    background:var(--surface-2); border:1px solid var(--line); padding:4px 10px; border-radius:4px;
-  }
-  .proj-details{max-height:0; overflow:hidden; transition:max-height .4s ease;}
-  .proj.open .proj-details{max-height:420px;}
-  .proj-details ul{list-style:none; padding-top:14px; border-top:1px solid var(--line);}
-  .proj-details li{font-size:13.5px; color:var(--muted); padding:7px 0 7px 20px; position:relative;}
-  .proj-details li::before{content:"›"; position:absolute; left:0; color:var(--accent); font-weight:700;}
-  .proj-toggle{
-    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--accent);
-    display:inline-flex; align-items:center; gap:6px;
-  }
-  .proj-toggle .chev{transition:transform .3s; display:inline-block;}
-  .proj.open .proj-toggle .chev{transform:rotate(90deg);}
-  .proj-bar{height:3px; background:linear-gradient(90deg, var(--accent-dim), var(--accent), var(--accent-dim)); background-size:200% 100%; opacity:0; transition:opacity .3s;}
-  .proj:hover .proj-bar{opacity:1; animation:shimmer 2s linear infinite;}
-  @keyframes shimmer{0%{background-position:200% 0;} 100%{background-position:-200% 0;}}
-
-  /* ===== SKILLS ===== */
-  .skills-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;}
-  .skill-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:20px 22px;
-    transition:border-color .2s, transform .2s;
-  }
-  .skill-card:hover{border-color:var(--accent-dim); transform:translateY(-2px);}
-  .skill-card .cat{
-    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--accent);
-    text-transform:uppercase; letter-spacing:.05em; margin-bottom:14px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .skill-card .cat::before{content:"$"; color:var(--accent-dim);}
-  .skill-tags{display:flex; flex-wrap:wrap; gap:7px;}
-  .skill-tag{
-    font-size:12.5px; padding:6px 11px; border-radius:5px;
-    background:var(--surface-2); border:1px solid var(--line); color:var(--text);
-    transition:border-color .2s, color .2s;
-  }
-  .skill-tag:hover{border-color:var(--accent-dim); color:var(--accent);}
-
-  /* ===== PUBLICATION ===== */
-  .pub-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:8px;
-    padding:26px 28px; display:flex; gap:22px; align-items:flex-start;
-    transition:border-color .2s;
-  }
-  .pub-card:hover{border-color:var(--accent-dim);}
-  .pub-icon{
-    font-family:'JetBrains Mono',monospace; font-size:22px; color:var(--accent);
-    background:var(--accent-soft); border:1px solid var(--accent-dim); border-radius:8px;
-    width:48px; height:48px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-  }
-  .pub-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; margin-bottom:8px;}
-  .pub-meta{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--dim); margin-bottom:12px;}
-  .pub-desc{color:var(--muted); font-size:14px; margin-bottom:14px;}
-  .pub-link{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--accent); border-bottom:1px solid var(--accent-dim); padding-bottom:1px;}
-
-  /* ===== CONTACT ===== */
-  .contact-box{
-    background:var(--surface); border:1px solid var(--line); border-radius:10px;
-    padding:52px 32px; text-align:center; position:relative; overflow:hidden;
-  }
-  .contact-box::before{
-    content:""; position:absolute; top:-40%; left:50%; transform:translateX(-50%);
-    width:500px; height:280px; background:radial-gradient(ellipse, rgba(79,209,197,0.14), transparent 70%);
-    pointer-events:none;
-  }
-  .contact-box h3{font-family:'Space Grotesk',sans-serif; font-size:30px; font-weight:700; margin-bottom:12px; position:relative;}
-  .contact-box p{color:var(--muted); font-size:14.5px; margin-bottom:30px; max-width:460px; margin-left:auto; margin-right:auto; position:relative;}
-  .contact-links{display:flex; justify-content:center; gap:12px; flex-wrap:wrap; position:relative;}
-  .clink{
-    font-family:'JetBrains Mono',monospace; font-size:13px;
-    border:1px solid var(--line); padding:12px 19px; border-radius:6px;
-    display:flex; align-items:center; gap:9px; transition:all .18s; background:var(--surface-2);
-  }
-  .clink:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-2px); background:var(--accent-soft);}
-
-  footer{padding:32px 0; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--dim); position:relative; z-index:1;}
-
-  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
-  .reveal.show{opacity:1; transform:translateY(0);}
-
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    .reveal{opacity:1; transform:none; transition:none;}
-    .cursor, .nav-cta .pulse, .proj-bar{animation:none;}
-  }
-
-  @media (max-width:760px){
-    .navlinks{display:none;}
-    .about-grid{grid-template-columns:1fr;}
-    .skills-grid{grid-template-columns:1fr;}
-    .proj-head{flex-direction:column;}
-    .stat-strip{grid-template-columns:repeat(2,1fr);}
-    section{padding:56px 0;}
-    .hero{padding:56px 0 40px;}
-    canvas#net{display:none;}
-  }
-
-  a:focus-visible, button:focus-visible, .proj:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
 </style>
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
-
-<div class="bg-fixed">
-  <div class="bg-grid"></div>
-  <div class="bg-glow"></div>
-</div>
-
 <header>
-  <nav>
-    <div class="logo"><div class="logo-badge">Q</div>hnvq<span style="color:var(--accent)">.</span>dev</div>
-    <div class="navlinks">
-      <a href="#about">about</a>
-      <a href="#projects">projects</a>
-      <a href="#skills">skills</a>
-      <a href="#publication">research</a>
-      <a href="#contact">contact</a>
-    </div>
-    <a href="mailto:hoangquocfw@gmail.com" class="nav-cta"><span class="pulse"></span>say_hello()</a>
-  </nav>
+  <div class="container">
+    <nav>
+      <a href="#" class="logo serif">HNVQ<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Work</a>
+        <a href="#skills">Expertise</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
 </header>
 
-<main class="wrap">
-
+<main>
   <!-- HERO -->
   <section class="hero" id="top" style="border-top:none;">
-    <canvas id="net"></canvas>
-    <div class="hero-top">
-      <div>
-        <div class="kicker"><span class="line"></span>backend engineering intern candidate</div>
-        <h1>Building systems<br>that <span class="accent-word">just work.</span></h1>
-        <p class="sub">Sinh viên IT năm cuối tại TP.HCM, xây backend từ database đến API — độc lập kiến trúc một nền tảng <strong>35 endpoint</strong>, và giờ đang tìm một đội ngũ thật để đào sâu hơn về system design.</p>
-        <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">Xem dự án →</a>
-          <a href="#contact" class="btn btn-ghost">Liên hệ</a>
+    <div class="container">
+      <div class="hero-content fade-up">
+        <span class="kicker">Backend Software Engineer</span>
+        <h1>Kiến tạo hệ thống <i>bền vững.</i></h1>
+        <p>Sinh viên IT năm cuối tại TP.HCM. Chuyên môn thiết kế database, phát triển RESTful API và kiến trúc phần mềm sạch. Sẵn sàng cho vị trí Backend Developer Internship.</p>
+        <div style="display:flex; gap:16px; margin-top:32px;">
+          <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
+          <a href="#contact" class="btn btn-outline">Liên Hệ</a>
         </div>
-      </div>
-    </div>
-
-    <div class="console reveal">
-      <div class="console-bar">
-        <div class="console-dot"></div><div class="console-dot"></div><div class="console-dot"></div>
-        <span class="console-title">~/candidates/hoang-quoc — zsh</span>
-      </div>
-      <div class="console-body" id="termBody"></div>
-      <div class="stat-strip">
-        <div><div class="n">56</div><div class="l">API endpoints</div></div>
-        <div><div class="n">2</div><div class="l">systems shipped</div></div>
-        <div><div class="n">41%</div><div class="l">commit share</div></div>
-        <div><div class="n">1</div><div class="l">publication</div></div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">56</div>
+            <div class="label">API Endpoints</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">2</div>
+            <div class="label">Systems Shipped</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">41%</div>
+            <div class="label">Commit Share</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1</div>
+            <div class="label">Publication</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">Về mình</h2><span class="sec-line"></span></div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p><span class="drop">M</span>ình là sinh viên IT năm cuối tại Đại học GTVT TP.HCM, tập trung vào <strong>backend engineering</strong> — từ thiết kế database, dựng RESTful API, đến triển khai business logic theo kiến trúc sạch (Repository + Service Layer).</p>
-        <p>Mình thích chủ động: tự kiến trúc và triển khai toàn bộ một nền tảng social network 35-endpoint một mình, và trong môi trường team thì luôn là người đóng góp nhiều commit nhất để đẩy tiến độ chung.</p>
-        <p>Làm việc theo hướng <strong>AI-first</strong> — dùng ChatGPT, Claude, Gemini và Antigravity mỗi ngày để tăng tốc học stack mới, debug, và refactor code nhanh hơn.</p>
-      </div>
-      <div class="stack-box reveal">
-        <div class="head"><span>profile.json</span><span style="color:var(--accent-dim)">●</span></div>
-        <div class="body">
-          <div class="kv"><span class="key">education</span><span class="val">IT · GPA 3.19/4.0</span></div>
-          <div class="kv"><span class="key">graduation</span><span class="val">Sep 2027</span></div>
-          <div class="kv"><span class="key">focus</span><span class="val">Backend / System Design</span></div>
-          <div class="kv"><span class="key">languages</span><span class="val">VI (Native), EN (TOEIC 785)</span></div>
-          <div class="kv"><span class="key">status</span><span class="val ok">available_for_internship</span></div>
+    <div class="container">
+      <h2 class="sec-title"><span>01</span> Về Bản Thân</h2>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>Mình là sinh viên IT năm cuối tại Đại học GTVT TP.HCM, tập trung vào <strong>backend engineering</strong> — từ thiết kế database, dựng RESTful API, đến triển khai business logic theo kiến trúc sạch (Repository + Service Layer).</p>
+          <p>Mình đề cao sự chủ động: tự kiến trúc và triển khai toàn bộ một nền tảng social network 35-endpoint một mình, và trong môi trường team thì luôn nỗ lực đóng góp nhiều nhất để đẩy tiến độ chung.</p>
+          <p>Làm việc theo hướng <strong>AI-first</strong> — ứng dụng ChatGPT, Claude, Gemini và Antigravity mỗi ngày để tăng tốc nghiên cứu stack mới, debug và tối ưu hóa code.</p>
+        </div>
+        <div class="profile-card fade-up" style="transition-delay: 0.2s;">
+          <div class="profile-row">
+            <span class="profile-label">Chuyên môn</span>
+            <span class="profile-val">Backend / System Design</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Học vấn</span>
+            <span class="profile-val">IT · GPA 3.19/4.0</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Tốt nghiệp</span>
+            <span class="profile-val">Tháng 9, 2027</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Ngoại ngữ</span>
+            <span class="profile-val">Tiếng Việt, Tiếng Anh (TOEIC 785)</span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-label">Trạng thái</span>
+            <span class="profile-val" style="color:var(--accent);">Tìm kiếm Thực tập</span>
+          </div>
         </div>
       </div>
     </div>
@@ -405,116 +260,99 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">Dự án nổi bật</h2><span class="sec-line"></span></div>
+    <div class="container">
+      <h2 class="sec-title"><span>02</span> Dự Án Nổi Bật</h2>
 
-    <div class="proj reveal" tabindex="0">
-      <div class="proj-bar"></div>
-      <div class="proj-inner">
-        <div class="proj-head">
-          <div>
-            <span class="proj-tag">team of 7</span>
-            <div class="proj-name"><a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener">QBCA <span style="font-size:16px; color:var(--accent);">↗</span></a> <span style="font-size:12px; color:var(--dim); font-family:monospace; margin-left:8px; font-weight:normal">(Java / Spring Boot)</span></div>
+      <!-- Project 1: QBCA -->
+      <div class="project-card fade-up">
+        <div>
+          <div class="proj-meta">Team of 7 · May 2025 – Aug 2025</div>
+          <h3 class="proj-title"><a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener">QBCA (Course Management) ↗</a></h3>
+          <p class="proj-desc">Hệ thống phát hiện câu hỏi trùng lặp bằng semantic similarity (Sentence-BERT + Cosine Similarity). Đóng góp vai trò Backend Developer trong đội ngũ cross-functional.</p>
+          
+          <div class="proj-stats-grid">
+            <div class="proj-stat"><div class="s-num">21</div><div class="s-lbl">Endpoints</div></div>
+            <div class="proj-stat"><div class="s-num">179</div><div class="s-lbl">Commits</div></div>
+            <div class="proj-stat"><div class="s-num">41%</div><div class="s-lbl">Team Share</div></div>
           </div>
-          <div class="proj-date">May 2025 — Aug 2025</div>
         </div>
-        <p class="proj-desc">Question Bank Checking Application — phát hiện câu hỏi trùng lặp bằng semantic similarity, xây dựng trong đội cross-functional 7 người.</p>
-        <div class="proj-stats">
-          <div class="stat"><div class="num">21</div><div class="lbl">API endpoints</div></div>
-          <div class="stat"><div class="num">179</div><div class="lbl">/437 commits</div></div>
-          <div class="stat"><div class="num">41%</div><div class="lbl">team commit share</div></div>
-        </div>
-        <div class="proj-action-links">
-          <a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener" class="btn-sm btn-outline"><span style="font-size:14px">⌥</span> Source Code</a>
-        </div>
-        <div class="tech-row">
-          <span class="tech">Java</span><span class="tech">Spring Boot</span><span class="tech">Spring Security</span>
-          <span class="tech">Spring Data JPA</span><span class="tech">REST API</span><span class="tech">SQL Server</span>
-        </div>
-        <div class="proj-toggle" data-toggle><span class="chev">›</span> chi tiết kỹ thuật</div>
-        <div class="proj-details">
-          <ul>
-            <li>Đóng góp với vai trò Backend Developer trong team cross-functional 7 người (3 backend, 3 frontend, 1 AI developer) — commit volume cao nhất team, xây 21 endpoint cho module Authentication, User, Subject Controller.</li>
-            <li>Tích hợp module semantic duplicate-detection (Sentence-BERT + Cosine Similarity) vào backend, phối hợp với team AI để tự động hóa việc so sánh câu hỏi.</li>
-            <li>Thiết kế database schema cho users, subjects, question data, triển khai role-based access control xuyên suốt module.</li>
-          </ul>
+        
+        <div>
+          <div class="proj-tech">
+            <span class="tech-badge">Java</span><span class="tech-badge">Spring Boot</span>
+            <span class="tech-badge">Spring Security</span><span class="tech-badge">Spring Data JPA</span>
+            <span class="tech-badge">SQL Server</span><span class="tech-badge">REST API</span>
+          </div>
+          <p class="proj-desc" style="font-size:14px;">Thiết kế database schema, triển khai role-based access control xuyên suốt module. Tích hợp module AI duplicate-detection vào backend pipeline.</p>
+          <div class="proj-links">
+            <a href="https://github.com/huystackai/CourseManagementSystem" target="_blank" rel="noopener" class="proj-link">Mã Nguồn (GitHub) ↗</a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="proj reveal" tabindex="0">
-      <div class="proj-bar"></div>
-      <div class="proj-inner">
-        <div class="proj-head">
-          <div>
-            <span class="proj-tag">solo project</span>
-            <div class="proj-name"><a href="https://okemsocial.onrender.com/" target="_blank" rel="noopener">OkemSocial <span style="font-size:16px; color:var(--accent);">↗</span></a></div>
+      <!-- Project 2: OkemSocial -->
+      <div class="project-card fade-up">
+        <div>
+          <div class="proj-meta">Solo Project · Sep 2025 – Nov 2025</div>
+          <h3 class="proj-title"><a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener">OkemSocial ↗</a></h3>
+          <p class="proj-desc">Nền tảng mạng xã hội full-stack, tự kiến trúc và triển khai end-to-end một mình — từ database schema đến real-time messaging theo mô hình Repository + Service Layer.</p>
+          
+          <div class="proj-stats-grid">
+            <div class="proj-stat"><div class="s-num">35</div><div class="s-lbl">Endpoints</div></div>
+            <div class="proj-stat"><div class="s-num">10</div><div class="s-lbl">DB Tables</div></div>
+            <div class="proj-stat"><div class="s-num">4</div><div class="s-lbl">SignalR Hubs</div></div>
           </div>
-          <div class="proj-date">Sep 2025 — Nov 2025</div>
         </div>
-        <p class="proj-desc">Nền tảng mạng xã hội full-stack, tự kiến trúc và triển khai end-to-end một mình — từ database schema đến real-time messaging.</p>
-        <div class="proj-stats">
-          <div class="stat"><div class="num">35</div><div class="lbl">API endpoints</div></div>
-          <div class="stat"><div class="num">10</div><div class="lbl">DB tables</div></div>
-          <div class="stat"><div class="num">4</div><div class="lbl">SignalR hubs</div></div>
-        </div>
-        <div class="proj-action-links">
-          <a href="https://okemsocial.onrender.com/" target="_blank" rel="noopener" class="btn-sm btn-outline"><span style="font-size:14px">🌐</span> Live Demo</a>
-          <a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener" class="btn-sm btn-outline"><span style="font-size:14px">⌥</span> Source Code</a>
-        </div>
-        <div class="tech-row">
-          <span class="tech">ASP.NET Core 8</span><span class="tech">C#</span><span class="tech">Entity Framework Core</span>
-          <span class="tech">SQL Server</span><span class="tech">JWT</span><span class="tech">SignalR</span><span class="tech">Docker</span>
-        </div>
-        <div class="proj-toggle" data-toggle><span class="chev">›</span> chi tiết kỹ thuật</div>
-        <div class="proj-details">
-          <ul>
-            <li>Kiến trúc 10-table relational database schema và 35 RESTful API endpoints xuyên suốt các module Auth, Profile, Follow, Post, Comment, Like, Media, Messaging — theo mô hình Repository + Service Layer.</li>
-            <li>Xây dựng dual-mode authentication (JWT cho API, Cookie cho MVC) với Refresh Token rotation và BCrypt password hashing, bảo vệ toàn bộ 35 endpoint bằng role-based access control.</li>
-            <li>Triển khai hệ thống chat real-time qua SignalR (4 hub methods, 3 client events) — live chat, typing indicator, read-receipt cho nhiều cuộc hội thoại đồng thời.</li>
-          </ul>
+        
+        <div>
+          <div class="proj-tech">
+            <span class="tech-badge">ASP.NET Core 8</span><span class="tech-badge">C#</span>
+            <span class="tech-badge">EF Core</span><span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">SignalR</span><span class="tech-badge">JWT</span><span class="tech-badge">Docker</span>
+          </div>
+          <p class="proj-desc" style="font-size:14px;">Xây dựng dual-mode authentication (JWT + Cookie). Triển khai hệ thống chat và thông báo thời gian thực hỗ trợ nhiều kết nối đồng thời với SignalR.</p>
+          <div class="proj-links">
+            <a href="https://okemsocial.onrender.com/" target="_blank" rel="noopener" class="proj-link">Live Demo ↗</a>
+            <a href="https://github.com/hqcoder05/okemsocial" target="_blank" rel="noopener" class="proj-link">Mã Nguồn (GitHub) ↗</a>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- SKILLS -->
   <section id="skills">
-    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">Kỹ năng & Công cụ</h2><span class="sec-line"></span></div>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="cat">languages & fundamentals</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Java</span><span class="skill-tag">C#</span><span class="skill-tag">Python</span>
-          <span class="skill-tag">JavaScript</span><span class="skill-tag">OOP</span>
-          <span class="skill-tag">Data Structures & Algorithms</span><span class="skill-tag">Agile/Scrum</span>
+    <div class="container">
+      <h2 class="sec-title"><span>03</span> Chuyên Môn</h2>
+      <div class="skills-grid">
+        <div class="skill-group fade-up">
+          <h4 class="skill-title">Nền tảng & Ngôn ngữ</h4>
+          <div class="skill-list">
+            <span class="skill-item">Java</span><span class="skill-item">C#</span><span class="skill-item">Python</span>
+            <span class="skill-item">JavaScript</span><span class="skill-item">OOP</span><span class="skill-item">Cấu trúc dữ liệu & Thuật toán</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="cat">frameworks</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Spring Boot</span><span class="skill-tag">ASP.NET Core</span>
-          <span class="skill-tag">MVC</span><span class="skill-tag">Repository Pattern</span><span class="skill-tag">Service Layer</span>
+        <div class="skill-group fade-up" style="transition-delay: 0.1s;">
+          <h4 class="skill-title">Frameworks</h4>
+          <div class="skill-list">
+            <span class="skill-item">Spring Boot</span><span class="skill-item">ASP.NET Core</span>
+            <span class="skill-item">MVC</span><span class="skill-item">Repository Pattern</span><span class="skill-item">Service Layer</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="cat">databases & integration</div>
-        <div class="skill-tags">
-          <span class="skill-tag">SQL Server</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
-          <span class="skill-tag">RESTful API</span><span class="skill-tag">JWT</span><span class="skill-tag">Postman</span>
+        <div class="skill-group fade-up" style="transition-delay: 0.2s;">
+          <h4 class="skill-title">Cơ sở dữ liệu & Tích hợp</h4>
+          <div class="skill-list">
+            <span class="skill-item">SQL Server</span><span class="skill-item">PostgreSQL</span><span class="skill-item">MongoDB</span>
+            <span class="skill-item">RESTful API</span><span class="skill-item">JWT</span><span class="skill-item">SignalR</span>
+          </div>
         </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="cat">devops & tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Git / GitHub</span><span class="skill-tag">GitHub Actions</span>
-          <span class="skill-tag">Docker</span><span class="skill-tag">Linux</span>
-        </div>
-      </div>
-      <div class="skill-card reveal" style="grid-column:1/-1">
-        <div class="cat">ai-assisted engineering</div>
-        <div class="skill-tags">
-          <span class="skill-tag">ChatGPT</span><span class="skill-tag">Claude</span><span class="skill-tag">Gemini</span>
-          <span class="skill-tag">Google Antigravity</span><span class="skill-tag">Prompt-driven debugging & refactoring</span>
+        <div class="skill-group fade-up" style="transition-delay: 0.3s;">
+          <h4 class="skill-title">DevOps & AI Tools</h4>
+          <div class="skill-list">
+            <span class="skill-item">Git / GitHub</span><span class="skill-item">Docker</span><span class="skill-item">Linux</span>
+            <span class="skill-item">ChatGPT</span><span class="skill-item">Claude</span><span class="skill-item">Gemini</span>
+          </div>
         </div>
       </div>
     </div>
@@ -522,139 +360,54 @@
 
   <!-- PUBLICATION -->
   <section id="publication">
-    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">Nghiên cứu</h2><span class="sec-line"></span></div>
-    <div class="pub-card reveal">
-      <div class="pub-icon">§</div>
-      <div>
-        <div class="pub-title">Development of a Machine Learning-Based Duplicate Question Detection System</div>
-        <div class="pub-meta">Co-author · AI KING: Shaping the Future Scientific Workshop Proceedings · Jul 2025</div>
-        <p class="pub-desc">Đóng góp phát triển QBCA — nền tảng phát hiện câu hỏi trùng lặp bằng semantic similarity, sử dụng Sentence-BERT và Cosine Similarity.</p>
-        <a href="https://drive.google.com/file/d/1eZ-oPYY1l1mS3XmeyZMAalcD21ptIior/view" target="_blank" rel="noopener" class="pub-link">Xem bài báo →</a>
+    <div class="container">
+      <h2 class="sec-title"><span>04</span> Nghiên Cứu</h2>
+      <div class="research-card fade-up">
+        <div class="research-icon">§</div>
+        <div>
+          <h3 class="research-title">Development of a Machine Learning-Based Duplicate Question Detection System</h3>
+          <div class="research-meta">Đồng tác giả · AI KING Scientific Workshop · Tháng 7, 2025</div>
+          <p class="research-desc">Đóng góp phát triển thuật toán và hệ thống tích hợp API cho nền tảng phát hiện câu hỏi trùng lặp bằng semantic similarity (Sentence-BERT và Cosine Similarity).</p>
+          <a href="https://drive.google.com/file/d/1eZ-oPYY1l1mS3XmeyZMAalcD21ptIior/view" target="_blank" rel="noopener" class="research-link">Đọc bài báo nghiên cứu ↗</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Kết nối</h2><span class="sec-line"></span></div>
-    <div class="contact-box reveal">
-      <h3>POST /contact</h3>
-      <p>Đang tìm cơ hội Backend Developer Internship. Nếu team bạn cần một người chủ động và ham học, mình sẵn sàng trao đổi.</p>
+  <section id="contact" style="border-bottom: 1px solid var(--border);">
+    <div class="container contact-section fade-up">
+      <h2 class="serif">Hợp tác & Kết nối</h2>
+      <p>Mình đang tìm kiếm cơ hội Backend Developer Internship. Nếu đội ngũ của bạn cần một kỹ sư trẻ chủ động, ham học và có tư duy hệ thống, hãy liên hệ với mình.</p>
       <div class="contact-links">
-        <a href="mailto:hoangquocfw@gmail.com" class="clink">✉ hoangquocfw@gmail.com</a>
-        <a href="tel:+84325519172" class="clink">☎ +84 325 519 172</a>
-        <a href="https://linkedin.com/in/hoangquoc1726768" target="_blank" rel="noopener" class="clink">in/ LinkedIn</a>
-        <a href="https://github.com/hqcoder05" target="_blank" rel="noopener" class="clink">⌥ GitHub</a>
+        <a href="mailto:hoangquocfw@gmail.com" class="contact-link">hoangquocfw@gmail.com</a>
+        <a href="tel:+84325519172" class="contact-link">+84 325 519 172</a>
+        <a href="https://linkedin.com/in/hoangquoc1726768" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/hqcoder05" target="_blank" rel="noopener" class="contact-link">GitHub</a>
       </div>
     </div>
   </section>
-
 </main>
 
-<footer>© 2026 Hoang Nguyen Viet Quoc — built with HTML, CSS, and a bit of curiosity.</footer>
+<footer>
+  <div class="container">
+    © 2026 Hoang Nguyen Viet Quoc. Kiến tạo bằng sự chỉn chu.
+  </div>
+</footer>
 
 <script>
-  /* progress bar */
-  window.addEventListener('scroll', ()=>{
-    const h = document.documentElement;
-    const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
-    document.getElementById('progress').style.width = pct + '%';
-  });
-
-  /* scroll reveal */
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
-    });
-  }, {threshold:0.12});
-  revealEls.forEach(el=>io.observe(el));
-
-  /* project card expand */
-  document.querySelectorAll('[data-toggle]').forEach(btn=>{
-    btn.addEventListener('click', (e)=>{ e.stopPropagation(); btn.closest('.proj').classList.toggle('open'); });
-  });
-  document.querySelectorAll('.proj').forEach(card=>{
-    card.addEventListener('click', (e)=> {
-      if(e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn-sm')) return;
-      card.classList.toggle('open');
-    });
-
-    card.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); card.classList.toggle('open'); }
-    });
-  });
-
-  /* terminal boot sequence */
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const lines = [
-    '<span class="prompt">$</span> whoami --candidate',
-    '<span class="ok">→ 200 OK</span> · resolved in 34ms',
-    '<span class="key">name</span>       <span class="val">Hoang Nguyen Viet Quoc</span>',
-    '<span class="key">role</span>       <span class="val">Backend Engineering Intern Candidate</span>',
-    '<span class="key">stack</span>      <span class="val">Java · Spring Boot · C# · ASP.NET Core</span>',
-    '<span class="key">location</span>   <span class="val">Ho Chi Minh City, Vietnam</span>'
-  ];
-  const term = document.getElementById('termBody');
-  function boot(){
-    term.innerHTML = '';
-    lines.forEach((html, i)=>{
-      const div = document.createElement('div');
-      div.className = 'cl';
-      div.innerHTML = html;
-      div.style.animationDelay = (i*0.16) + 's';
-      term.appendChild(div);
-    });
-    const cur = document.createElement('span');
-    cur.className = 'cursor';
-    term.appendChild(cur);
-  }
-  if(reduceMotion){
-    term.innerHTML = lines.map(l=>'<div class="cl" style="opacity:1">'+l+'</div>').join('');
-  } else {
-    boot();
-  }
-
-  /* particle network canvas in hero */
-  if(!reduceMotion){
-    const canvas = document.getElementById('net');
-    const ctx = canvas.getContext('2d');
-    let w, h, pts;
-    function resize(){
-      w = canvas.width = canvas.offsetWidth;
-      h = canvas.height = canvas.offsetHeight;
-      const count = w < 700 ? 0 : 34;
-      pts = Array.from({length:count}, ()=>({
-        x: Math.random()*w, y: Math.random()*h,
-        vx:(Math.random()-0.5)*0.25, vy:(Math.random()-0.5)*0.25
-      }));
-    }
-    function tick(){
-      ctx.clearRect(0,0,w,h);
-      pts.forEach(p=>{
-        p.x += p.vx; p.y += p.vy;
-        if(p.x<0||p.x>w) p.vx*=-1;
-        if(p.y<0||p.y>h) p.vy*=-1;
-      });
-      for(let i=0;i<pts.length;i++){
-        for(let j=i+1;j<pts.length;j++){
-          const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
-          const d = Math.sqrt(dx*dx+dy*dy);
-          if(d < 130){
-            ctx.strokeStyle = 'rgba(79,209,197,' + (0.16*(1-d/130)) + ')';
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke();
-          }
-        }
-        ctx.fillStyle = 'rgba(79,209,197,0.55)';
-        ctx.beginPath(); ctx.arc(pts[i].x, pts[i].y, 1.6, 0, Math.PI*2); ctx.fill();
+  // Fade-up animation on scroll
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-      requestAnimationFrame(tick);
-    }
-    window.addEventListener('resize', resize);
-    resize();
-    tick();
-  }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
